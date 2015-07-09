@@ -1,0 +1,78 @@
+<html>
+<head>
+<style>
+body {
+background-color: grey;
+}
+</style>
+</head>
+<body>
+<input type="button" value="<===" onclick="move_left()"></input>
+<input type="button" value="===>" onclick="move_right()"></input>
+<br><br>
+<canvas  id="myCanvas" width="1355" height="600"></canvas>
+<script>
+
+if (localStorage.clickcount3 == null)
+{localStorage.clickcount3 = 100;}
+
+draw();
+
+function draw() {
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "#505050";
+ctx.fillRect(localStorage.clickcount3,200,100,100); }
+
+</script>
+
+<script>
+function move_right() {
+clear();
+clickCounter_right();
+draw(); }
+
+function move_left() {
+clear();
+clickCounter_left();
+draw();
+}
+</script>
+
+<script>
+function clickCounter_right() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount3) {
+            localStorage.clickcount3 = Number(localStorage.clickcount3)+10;
+        } 
+		else {
+		    localStorage.clickcount3 = 100;
+		}	
+    } 
+}
+</script>
+
+<script>
+function clickCounter_left() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount3) {
+            localStorage.clickcount3 = Number(localStorage.clickcount3)-10;
+        }
+        else {
+		    localStorage.clickcount3 = 100;
+		}	 		
+    } 
+}
+</script>
+
+<script>
+function clear() {
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "grey";
+ctx.fillRect(0,0,1355,800);
+}
+</script>
+
+</body>
+</html>
